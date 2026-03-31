@@ -1,0 +1,37 @@
+.mosh-nav {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-bottom: 2px solid var(--blood-red);
+    padding: 1rem 0;
+    transition: all 0.5s ease;
+}
+
+.mosh-logo {
+    font-family: var(--gothic-font), serif;
+    font-size: 1.8rem;
+    color: var(--neon-red) !important;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+}
+
+.nav-link {
+    font-family: var(--rock-font), serif;
+    letter-spacing: 1px;
+    margin: 0 10px;
+}
+
+.nav-link:hover {
+    color: var(--neon-red) !important;
+    transform: translateY(-2px);
+}
+
+.btn-backstage {
+    border: 2px solid var(--blood-red);
+    color: white;
+    font-family: var(--rock-font), serif;
+    transition: 0.3s;
+}
+
+.btn-backstage:hover {
+    background: var(--blood-red);
+    box-shadow: 0 0 15px var(--neon-red);
+    color: black;
+}

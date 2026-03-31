@@ -1,0 +1,22 @@
+.img-grunge {
+    filter: sepia(0.5) contrast(1.2) brightness(0.8);
+    border: 3px solid var(--blood-red);
+}
+
+.member-card {
+    transition: 0.4s;
+    overflow: hidden;
+}
+
+.member-card:hover img {
+    filter: none;
+    transform: scale(1.1);
+}
+
+.shadow-album {
+    box-shadow: 10px 10px 0 var(--blood-red);
+}
+
+.glitch-text {
+    text-shadow: 2px 2px #ff0000, -2px -2px #000;
+}

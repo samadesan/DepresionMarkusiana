@@ -1,0 +1,25 @@
+.carousel-item {
+    height: 90vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    border: 2px solid var(--blood-red);
+    box-shadow: 0 0 20px var(--blood-red);
+}
+
+/* Fondo de sección con textura */
+.intro-section {
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('../media/img/old_school.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.intro-section p {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: #ccc;
+}
