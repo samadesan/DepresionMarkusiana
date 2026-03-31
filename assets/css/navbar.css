@@ -1,6 +1,9 @@
 /* assets/css/navbar.css */
 
 .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--bg-color) !important;
     border-bottom: 2px solid var(--gray-dark);
     padding: 1rem 0;

@@ -2,10 +2,10 @@
 :root {
     --bg-color: #000000;
     --text-color: #ffffff;
-    --accent-color: #ff0000; /* Rojo glitch ocasional */
+    --accent-color: #00ff6a;
     --gray-dark: #1a1a1a;
     --gray-light: #bcbcbc;
-    --font-main: 'JetBrains Mono', monospace; /* Cambiar aquí la fuente global */
+    --font-main: 'JetBrains Mono', monospace;
     --border-style: 1px solid #333;
 }
 

@@ -18,10 +18,15 @@ $discos = $query->fetchAll(PDO::FETCH_ASSOC);
                     <div class="card bg-transparent border-white rounded-0 h-100 album-card">
                         <img src="assets/media/img/<?php echo isset($disco['portada_url']) ? $disco['portada_url'] : 'placeholder.jpg'; ?>" class="card-img-top rounded-0 grayscale" alt="<?php echo $disco['titulo']; ?>">
                         <div class="card-body border-top border-white">
-                            <span class="badge bg-white text-black mb-2"><?php echo $disco['tipo']; ?></span>
-                            <h5 class="card-title fw-bold"><?php echo $disco['titulo']; ?></h5>
-                            <p class="card-text small text-secondary"><?php echo $disco['anio']; ?></p>
-                            <a href="<?php echo $disco['spotify_link']; ?>" target="_blank" class="btn btn-sm btn-outline-light rounded-0">ESCUCHAR</a>
+                            <div class="d-flex justify-content-between shadow-sm mb-2">
+                                <span class="badge bg-white text-black rounded-0"><?php echo $disco['tipo']; ?></span>
+                                <small class="text-secondary"><?php echo $disco['duracion']; ?> min</small>
+                            </div>
+                            <h5 class="card-title fw-bold text-uppercase"><?php echo $disco['titulo']; ?></h5>
+                            <p class="card-text small">
+                                Canciones: <?php echo $disco['cantidad_canciones']; ?> <br>
+                                Año: <?php echo $disco['anio']; ?>
+                            </p>
                         </div>
                     </div>
                 </div>

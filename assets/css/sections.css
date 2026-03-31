@@ -13,3 +13,81 @@ section {
     text-align: center;
     background: linear-gradient(to bottom, #000, #0a0a0a);
 }
+
+/* Efecto de revelación */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilo de tarjetas de álbum */
+.album-card {
+    transition: transform 0.3s ease;
+}
+
+.album-card:hover {
+    transform: scale(1.02);
+    border-color: var(--accent-color) !important;
+}
+
+.grayscale {
+    filter: grayscale(100%) contrast(120%);
+    transition: filter 0.3s ease;
+}
+
+.album-card:hover .grayscale {
+    filter: grayscale(0%) contrast(100%);
+}
+
+.member-box {
+    background: #050505;
+    transition: all 0.4s ease;
+}
+
+.member-box:hover {
+    box-shadow: 10px 10px 0px var(--text-color);
+    transform: translate(-5px, -5px);
+}
+
+.text-accent {
+    letter-spacing: 2px;
+}
+
+/* Tablas con estilo terminal */
+.table-dark {
+    background-color: transparent !important;
+}
+
+.table-dark thead th {
+    border-bottom: 2px solid var(--text-color);
+    color: var(--gray-light);
+}
+
+tr:hover td {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--accent-color);
+}
+
+/* Eventos */
+.list-group-item {
+    transition: all 0.3s ease;
+    border-left: 0;
+    border-right: 0;
+}
+
+.list-group-item:hover:not(.opacity-50) {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border-left: 5px solid var(--text-color);
+    padding-left: 1.5rem !important;
+}
+
+.list-group-item.opacity-50 {
+    filter: grayscale(1);
+    cursor: not-allowed;
+}
