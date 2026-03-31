@@ -1,20 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top mosh-nav">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-        <a class="navbar-brand mosh-logo" href="index.php">MOSHDOWN</a>
-        <button class="navbar-toggler border-danger" type="button" data-bs-toggle="collapse" data-bs-target="#moshMenu">
+        <a class="navbar-brand fw-bold" href="index.php">DEPRESIÓN SONORA</a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="moshMenu">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="bio.php">BIO</a></li>
-                <li class="nav-item"><a class="nav-link" href="miembros.php">MIEMBROS</a></li>
-                <li class="nav-item"><a class="nav-link" href="discografia.php">DISCOGRAFÍA</a></li>
-                <li class="nav-item"><a class="nav-link" href="instrumentos.php">INSTRUMENTOS</a></li>
-                <li class="nav-item"><a class="nav-link text-danger fw-bold" href="eventos.php"><i class="fas fa-skull"></i> EVENTOS</a></li>
-                <li class="nav-item ms-lg-3">
-                    <a class="btn btn-backstage" href="login.php">BACKSTAGE</a>
-                </li>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto text-uppercase">
+                <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="biografia.php">Biografía</a></li>
+                <li class="nav-item"><a class="nav-link" href="discografia.php">Discografía</a></li>
+                <li class="nav-item"><a class="nav-link" href="miembros.php">Miembros</a></li>
+                <li class="nav-item"><a class="nav-link" href="eventos.php">Eventos</a></li>
+                <li class="nav-item"><a class="nav-link btn-interact" href="login.php">Área Privada</a></li>
             </ul>
         </div>
     </div>

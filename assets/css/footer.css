@@ -1,0 +1,29 @@
+/* assets/css/footer.css */
+
+.footer {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.footer h5 {
+    letter-spacing: 2px;
+}
+
+/* Enlaces de redes sociales */
+.social-links a {
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+    padding: 5px 10px;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    border: 1px solid var(--text-color);
+    color: var(--accent-color) !important;
+}
+
+/* Badge de versión (Estilo etiqueta de inventario) */
+.badge {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}

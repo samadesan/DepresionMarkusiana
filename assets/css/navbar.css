@@ -1,37 +1,50 @@
-.mosh-nav {
-    background-color: rgba(0, 0, 0, 0.9);
-    border-bottom: 2px solid var(--blood-red);
+/* assets/css/navbar.css */
+
+.navbar {
+    background-color: var(--bg-color) !important;
+    border-bottom: 2px solid var(--gray-dark);
     padding: 1rem 0;
-    transition: all 0.5s ease;
+    transition: all 0.4s ease;
 }
 
-.mosh-logo {
-    font-family: var(--gothic-font), serif;
-    font-size: 1.8rem;
-    color: var(--neon-red) !important;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+/* El logo/nombre de la banda */
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: -1px;
+    font-size: 1.5rem;
+    color: var(--text-color) !important;
+    text-transform: uppercase;
 }
 
+/* Enlaces del menú */
 .nav-link {
-    font-family: var(--rock-font), serif;
-    letter-spacing: 1px;
-    margin: 0 10px;
+    color: var(--gray-light) !important;
+    font-size: 0.85rem;
+    padding: 0.5rem 1.2rem !important;
+    position: relative;
+    transition: color 0.2s ease;
 }
 
+/* Efecto Hover: Fondo blanco, texto negro (Inversión) */
 .nav-link:hover {
-    color: var(--neon-red) !important;
-    transform: translateY(-2px);
+    color: var(--bg-color) !important;
+    background-color: var(--text-color);
 }
 
-.btn-backstage {
-    border: 2px solid var(--blood-red);
-    color: white;
-    font-family: var(--rock-font), serif;
-    transition: 0.3s;
+/* Botón de Área Privada (Diferenciado) */
+.btn-interact {
+    border: 1px solid var(--text-color);
+    margin-left: 10px;
 }
 
-.btn-backstage:hover {
-    background: var(--blood-red);
-    box-shadow: 0 0 15px var(--neon-red);
-    color: black;
+.btn-interact:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color) !important;
+    background-color: transparent !important;
+}
+
+/* Hamburguesa en móvil (Líneas rectas) */
+.navbar-toggler {
+    border-radius: 0;
+    border: 1px solid var(--gray-light);
 }

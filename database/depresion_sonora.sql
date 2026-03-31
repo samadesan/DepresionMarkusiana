@@ -1,51 +1,29 @@
-CREATE DATABASE IF NOT EXISTS moshdown_db;
-USE moshdown_db;
+-- Estructura de base de datos para Depresión Markusiana
+CREATE DATABASE IF NOT EXISTS depresion_sonora;
+USE depresion_sonora;
 
--- Tabla de Usuarios para la zona interactiva (Backstage)
+-- 1. TABLA DE USUARIOS (Para el área interactiva)
 CREATE TABLE IF NOT EXISTS usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    email VARCHAR(100) NOT NULL,
+                                        id INT AUTO_INCREMENT PRIMARY KEY,
+                                        username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL, -- Usaremos password_hash de PHP
     rol ENUM('admin', 'fan') DEFAULT 'fan',
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+    ) ENGINE=InnoDB;
 
--- Tabla de Miembros de la Banda
-CREATE TABLE IF NOT EXISTS miembros (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    puesto VARCHAR(100), -- Ej: Guitarra solista, Voz gutural
-    foto VARCHAR(255),
-    bio_corta TEXT
-);
-
--- Tabla de Discografía
+-- 2. TABLA DE DISCOGRAFÍA (Para cargar álbumes dinámicamente)
 CREATE TABLE IF NOT EXISTS discografia (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(150) NOT NULL,
-    anio YEAR,
-    portada VARCHAR(255),
-    enlace_spotify VARCHAR(255)
-);
+                                           id INT AUTO_INCREMENT PRIMARY KEY,
+                                           titulo VARCHAR(100) NOT NULL,
+    anio YEAR NOT NULL,
+    tipo ENUM('EP', 'LP', 'Single') DEFAULT 'EP',
+    portada_url VARCHAR(255), -- Ruta a assets/media/img/
+    spotify_link VARCHAR(255)
+    ) ENGINE=InnoDB;
 
--- Tabla de Instrumentos
-CREATE TABLE IF NOT EXISTS instrumentos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_instrumento VARCHAR(100),
-    marca VARCHAR(100),
-    modelo VARCHAR(100),
-    id_miembro INT,
-    FOREIGN KEY (id_miembro) REFERENCES miembros(id) ON DELETE SET NULL
-);
-
--- Tabla de Conciertos y Eventos
-CREATE TABLE IF NOT EXISTS eventos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_evento VARCHAR(200) NOT NULL,
-    fecha_evento DATETIME NOT NULL,
-    lugar VARCHAR(255) NOT NULL,
-    ciudad VARCHAR(100) DEFAULT 'Castellón',
-    descripcion TEXT, link_entradas VARCHAR(255),
-    estado ENUM('confirmado', 'aplazado', 'sold_out') DEFAULT 'confirmado'
-);
+-- Insertar datos de prueba (Seeders)
+INSERT INTO discografia (titulo, anio, tipo) VALUES
+                                                 ('Depresión Sonora', 2020, 'EP'),
+                                                 ('Historias tristes para no dormir', 2021, 'EP'),
+                                                 ('El arte de morir muy despacio', 2022, 'LP');
