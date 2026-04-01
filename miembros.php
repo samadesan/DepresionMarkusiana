@@ -10,7 +10,7 @@ $miembros = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
     <main class="container py-5" id="main-wrapper">
-        <h2 class="display-4 fw-bold mb-5 reveal">LOS CULPABLES</h2>
+        <h2 class="display-4 fw-bold mb-5 reveal">MARKUSIANO Y SU GRUPO</h2>
 
         <div class="row g-5">
             <?php foreach($miembros as $m): ?>
@@ -21,7 +21,7 @@ $miembros = $query->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <div class="col-sm-7 p-4 d-flex flex-column justify-content-center">
                             <h3 class="fw-bold text-uppercase"><?php echo $m['nombre']; ?></h3>
-                            <p class="text-accent fw-bold small text-danger"><?php echo $m['rol_banda']; ?></p>
+                            <p class="text-accent fw-bold small"><?php echo $m['rol_banda']; ?></p>
                             <p class="small text-secondary"><?php echo $m['descripcion']; ?></p>
                         </div>
                     </div>

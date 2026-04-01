@@ -4,41 +4,62 @@
     animation: fadeInSharp 0.8s ease-out;
 }
 
-/* El Hero: Impacto visual */
-.hero-title {
-    font-size: clamp(3rem, 10vw, 8rem); /* Tamaño fluido */
-    line-height: 0.8;
-    letter-spacing: -5px;
-    text-transform: uppercase;
-    filter: drop-shadow(4px 4px 0px var(--gray-dark));
-}
-
-.hero-subtitle {
-    background-color: var(--text-color);
-    color: var(--bg-color);
-    display: inline-block;
-    padding: 5px 15px;
+/* Botón Neón (Verde #00ff6a) */
+.btn-neon {
+    background-color: var(--accent-color);
+    color: #000;
     font-weight: bold;
+    border-radius: 0;
+    border: none;
+    padding: 10px 25px;
+    transition: all 0.3s;
     text-transform: uppercase;
-    margin-top: 1rem;
 }
 
-/* Bloques de texto tipo "Manifiesto" */
-.manifesto-text {
-    border-left: 4px solid var(--text-color);
-    padding-left: 2rem;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: var(--gray-light);
+.btn-neon:hover {
+    box-shadow: 0 0 20px var(--accent-color);
+    background-color: #fff;
+    transform: scale(1.05);
 }
 
-/* Efecto de ruido/textura opcional para el fondo */
-.bg-noise {
-    position: fixed;
+/* Overlay que aparece en hover */
+.btn-play-overlay {
+    position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    z-index: -1;
-    opacity: 0.03;
-    pointer-events: none;
-    background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+    background: rgba(0, 0, 0, 0.5); /* Oscurece para resaltar el botón */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 5;
+}
+
+.album-card:hover .btn-play-overlay {
+    opacity: 1;
+}
+
+/* Modal y Reproductor */
+.border-neon {
+    border: 2px solid var(--accent-color) !important;
+}
+
+.audio-visualizer {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    height: 40px;
+}
+
+.bar {
+    width: 6px;
+    background: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
+    animation: pulse 0.5s infinite alternate;
+}
+
+/* Estilo para el reproductor de audio nativo */
+.custom-audio::-webkit-media-controls-panel {
+    background-color: #111;
 }

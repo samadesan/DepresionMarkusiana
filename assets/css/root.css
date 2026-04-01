@@ -15,3 +15,12 @@ body {
     font-family: var(--font-main), serif;
     overflow-x: hidden;
 }
+
+/* Ajuste para que la letra no sea oscura en la discografía */
+.card-title, .card-text {
+    color: var(--text-color) !important;
+}
+
+.text-accent {
+    color: var(--accent-color) !important;
+}

@@ -20,9 +20,7 @@
                             <a href="https://www.instagram.com/depresion.sonora/" class="text-white me-3 text-decoration-none">IG</a>
                             <a href="https://twitter.com/SonoraDepresion/status/1963265991732838427" class="text-white me-3 text-decoration-none">X</a>
                             <a href="https://www.youtube.com/@depresion.sonora" class="text-white text-decoration-none">YT</a>
-                            <a href="https://open.spotify.com/intl-es/artist/2oCrGFAUJwBVFaaIM8c0AO" class="text-white text-decoration-none">
-                                <img src="assets/media/img/iconoSpotify.png" alt="Spotify-DS" style="width: 30px;">
-                            </a>
+                            <a href="https://open.spotify.com/intl-es/artist/2oCrGFAUJwBVFaaIM8c0AO" class="text-white text-decoration-none fa-spotify">SP</a>
                             <a href="https://depresionsonora.com" class="text-white text-decoration-none">Web Oficial</a>
                         </div>
                         <div class="mt-3">
