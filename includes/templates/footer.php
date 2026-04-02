@@ -3,7 +3,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <a href="index.php">
-                            <img src="assets/media/img/DEPRESION-SONORA-slogan-1.png" alt="Slogan-DP-2" style="width: 240px; margin-bottom: 20px; padding: 5px;">
+                            <img src="assets/media/img/DEPRESION-SONORA-slogan-1.png" alt="Slogan-DP-2" id="slogan-footer">
                         </a>
                         <p class="small text-secondary">
                             Proyecto y diseño realizado por <a href="samuel-aded.php" class="footer-links">Samuel Aded Santafé</a>. <br><br>

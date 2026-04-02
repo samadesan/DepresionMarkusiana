@@ -11,8 +11,9 @@ include 'includes/templates/navbar.php';
     <main id="main-wrapper">
         <header class="hero container-fluid">
             <div class="text-center">
-                <h1 class="hero-title animate-glitch">DEPRESIÓN<br>SONORA</h1>
-                <p class="hero-subtitle">Bailes tristes para Markusianos</p>
+                <img src="assets/media/img/DEPRESION-SONORA-slogan-1.png" alt="Slogan-DS" style="width: 1240px; rotate: 8deg"><br><br>
+                <img src="assets/media/img/DEPRESION-SONORA-slogan-2.png" alt="Slogan-DS" style="width: 1440px; rotate: -3deg;"><br>
+                <p class="hero-subtitle badge bg-white text-black rounded-0" style="font-size: 20px; rotate: 5deg;">Bailes tristes para Markusianos</p>
             </div>
         </header>
 

@@ -3,6 +3,27 @@
 #main-wrapper {
     animation: fadeInSharp 0.8s ease-out;
 }
+/*==============================
+====-- TÍTULOS Y PÁRRAFOS --====
+===============================*/
+h2.titulo-centrado  {
+    display: flex;
+    justify-content: center;
+    align-content: center
+}
+
+span.elementos-resaltados {
+    color: #00ff6a;
+    font-weight: 900;
+}
+
+/* Párrafos */
+.contenido-parrafos {
+    font-size: 14px; !important;
+    line-height: 1.9;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+}
 
 /* Botón Neón (Verde #00ff6a) */
 .btn-neon {
@@ -62,4 +83,19 @@
 /* Estilo para el reproductor de audio nativo */
 .custom-audio::-webkit-media-controls-panel {
     background-color: #111;
+}
+
+/* Links */
+.ds-links {
+    color: #fff;
+    font-size: 14px;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.ds-links:hover {
+    color: var(--accent-color) !important;
+    text-decoration: initial;
+    transition: all 0.5s;
+    cursor: pointer;
 }

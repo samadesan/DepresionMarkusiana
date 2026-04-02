@@ -1,7 +1,7 @@
 /* Definición de la estética Depresión Sonora */
 :root {
     --bg-color: #000000;
-    --text-color: #ffffff;
+    --text-color: #eeeeee;
     --accent-color: #00ff6a;
     --gray-dark: #1a1a1a;
     --gray-light: #bcbcbc;
@@ -23,4 +23,8 @@ body {
 
 .text-accent {
     color: var(--accent-color) !important;
+}
+
+#slogan-ds {
+    margin: 50px auto;
 }

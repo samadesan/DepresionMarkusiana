@@ -8,3 +8,14 @@
     from { height: 10px; opacity: 0.5; }
     to { height: 40px; opacity: 1; }
 }
+
+/* Animación borde debajo Spotify */
+.sp-border-bottom-animation {
+    transition: all 0.8s;
+    border-bottom: 3px solid var(--accent-color);
+}
+.sp-border-bottom-animation:hover {
+    transition: all 0.4s;
+    font-size: 15px;
+    border-radius: 60%;
+}

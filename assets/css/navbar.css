@@ -51,3 +51,14 @@
     border-radius: 0;
     border: 1px solid var(--gray-light);
 }
+
+/* Crea un margen interno invisible para el ancla */
+.disco-item {
+    scroll-margin-top: 120px;
+}
+
+#slogan-footer {
+    width: 240px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
