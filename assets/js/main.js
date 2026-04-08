@@ -1,12 +1,5 @@
-/* assets/js/main.js */
-
 $(document).ready(function() {
-
-    /**==============================================================================**/
-    /**************************** Lógica JS para Observer *****************************/
-    /**==============================================================================**/
-    const observerOptions = { threshold: 0.1 };
-
+    // --- Lógica de Intersection Observer ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -14,118 +7,112 @@ $(document).ready(function() {
                 observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    $('.reveal').each(function() {
-        observer.observe(this);
-    });
+    $('.reveal').each(function() { observer.observe(this); });
 
-
-    /**==============================================================================**/
-    /************************ Lógica de Filtro (Buscador + Select) ********************/
-    /**==============================================================================**/
-    function filtrarDiscos() {
+    // --- Lógica de Filtros ---
+    $("#discoSearch, #filterType, #filterYear").on("input change", function() {
         const texto = $("#discoSearch").val().toLowerCase().trim();
         const categoria = $("#filterType").val();
         const anio = $("#filterYear").val();
 
         $(".disco-item").each(function() {
-            const contenido = $(this).find('.card-body').text().toLowerCase();
-            const tipoDisco = $(this).data("type");
-            const anioDisco = $(this).data("year") ? $(this).data("year").toString() : "";
+            const cardText = $(this).find('.card-body').text().toLowerCase();
+            const tipo = $(this).data("type");
+            const discoAnio = $(this).data("year")?.toString();
 
-            const coincideTexto = contenido.includes(texto);
-            const coincideCategoria = (categoria === "all" || tipoDisco === categoria);
-            const coincideAnio = (anio === "all" || anioDisco === anio);
+            const coincide = cardText.includes(texto) &&
+                (categoria === "all" || tipo === categoria) &&
+                (anio === "all" || discoAnio === anio);
 
-            if (coincideTexto && coincideCategoria && coincideAnio) {
-                $(this).fadeIn(200).removeClass('d-none');
-            } else {
-                $(this).fadeOut(200).addClass('d-none');
-            }
+            $(this).toggle(coincide);
         });
-    }
+    });
 
-    function manejarSaltoDesdeBio() {
-        const hash = window.location.hash;
-        if (hash && hash.includes('disco-')) {
-            $("#filterType").val("all");
-            $("#filterYear").val("all");
-            $("#discoSearch").val("");
+    // --- LÓGICA DEL REPRODUCTOR ---
+    const audio = document.getElementById('mainAudio');
 
-            filtrarDiscos();
-
-            setTimeout(() => {
-                const elemento = document.querySelector(hash);
-                if (elemento) {
-                    elemento.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }, 300);
-        }
-    }
-    manejarSaltoDesdeBio();
-
-    $(window).on('hashchange', manejarSaltoDesdeBio);
-    $("#discoSearch, #filterType, #filterYear").on("input change", filtrarDiscos);
-
-    if(window.location.hash) {
-        $("#filterType").val("all");
-        $("#filterYear").val("all");
-        $("#discoSearch").val("");
-        filtrarDiscos();
-    }
-
-
-    /**==============================================================================**/
-    /**************************** Lógica del Modal Player *****************************/
-    /**==============================================================================**/
     $(document).on("click", ".open-player", function() {
         const discoId = $(this).data('id');
         const discoTitle = $(this).data('title');
         $("#modalSongTitle").text(discoTitle);
+        $("#playerModal").modal('show');
 
-        const listaContainer = $("#playlistContainer");
-        listaContainer.html('<p class="text-secondary small">Cargando tracks...</p>');
+        const lista = $("#playlistContainer");
+        lista.html('<div class="text-center py-4"><div class="spinner-border text-success"></div></div>');
 
-        // Pedimos las canciones por AJAX al archivo independiente
-        $.getJSON('get_canciones.php', { disco_id: discoId }, function(data) {
-            listaContainer.empty();
-            if(data && data.length > 0) {
-                data.forEach(track => {
-                    listaContainer.append(`
-                    <div class="track-item d-flex justify-content-between align-items-center p-2 mb-2 border-bottom border-secondary" 
-                         style="cursor:pointer;" 
-                         data-src="assets/media/audio/${track.archivo_mp3}">
-                        <span class="small">${track.orden}. ${track.titulo}</span>
-                        <span class="small text-secondary text-accent-hover">${track.duracion_track || ''}</span>
-                    </div>
-                `);
+        $.getJSON('includes/get_canciones.php', { disco_id: discoId }, function(data) {
+            lista.empty();
+            if(data.length > 0) {
+                data.forEach((track, i) => {
+                    lista.append(`
+                        <div class="track-row" data-src="assets/media/audio/${track.archivo_mp3}">
+                            <span class="track-number">${i + 1}</span>
+                            <span class="track-title text-truncate">${track.titulo}</span>
+                            <span class="track-duration text-end">${track.duracion_track}</span>
+                        </div>
+                    `);
                 });
-            } else {
-                listaContainer.html('<p class="text-danger small">No hay audios disponibles.</p>');
             }
         });
-
-        $("#playerModal").modal('show');
     });
 
-    // Reproducción al clicar en un track de la lista
-    $(document).on("click", ".track-item", function() {
-        const src = $(this).data('src');
-        const player = $("#mainAudio");
-
-        $(".track-item").removeClass("text-accent fw-bold");
-        $(this).addClass("text-accent fw-bold");
-
-        player.find("source").attr("src", src);
-        player[0].load();
-        player[0].play();
+    // Reproducir al clicar fila
+    $(document).on("click", ".track-row", function() {
+        $(".track-row").removeClass("active-track");
+        $(this).addClass("active-track");
+        audio.src = $(this).data('src');
+        audio.play();
+        $("#playIcon").attr("class", "bi bi-pause-fill");
     });
 
-    // Detener audio al cerrar el modal
-    $('#playerModal').on('hidden.bs.modal', function () {
-        const audioEl = $("#mainAudio")[0];
-        audioEl.pause();
-        audioEl.currentTime = 0;
+    // Botones de control
+    $(document).on("click", "#customPlayPause", function() {
+        if(!audio.src) return;
+        if(audio.paused) {
+            audio.play();
+            $("#playIcon").attr("class", "bi bi-pause-fill");
+        } else {
+            audio.pause();
+            $("#playIcon").attr("class", "bi bi-play-fill");
+        }
     });
+
+    // Actualizar barra y tiempo
+    audio.addEventListener('timeupdate', () => {
+        const pct = (audio.currentTime / audio.duration) * 100;
+        $("#progressBar").css("width", pct + "%");
+        $("#currentTrackTime").text(formatTime(audio.currentTime));
+        $("#totalTrackTime").text(formatTime(audio.duration || 0));
+    });
+
+    // Saltar pista (Next/Prev)
+    function shiftTrack(next = true) {
+        const current = $(".track-row.active-track");
+        let target = next ? current.next() : current.prev();
+        if(!target.length) target = next ? $(".track-row").first() : $(".track-row").last();
+        target.click();
+    }
+
+    $(document).on("click", "#nextTrack", () => shiftTrack(true));
+    $(document).on("click", "#prevTrack", () => shiftTrack(false));
+    audio.addEventListener('ended', () => shiftTrack(true));
+
+    // Barra de progreso clickeable
+    $("#progressWrapper").on("click", function(e) {
+        const x = e.pageX - $(this).offset().left;
+        audio.currentTime = (x / $(this).width()) * audio.duration;
+    });
+
+    // Volumen
+    $("#volumeSlider").on("input", function() { audio.volume = $(this).val(); });
+
+    function formatTime(sec) {
+        const m = Math.floor(sec / 60);
+        const s = Math.floor(sec % 60);
+        return `${m}:${s < 10 ? '0' : ''}${s}`;
+    }
+
+    $('#playerModal').on('hidden.bs.modal', () => { audio.pause(); });
 });

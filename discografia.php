@@ -54,29 +54,19 @@ $discos = $query->fetchAll(PDO::FETCH_ASSOC);
                         <div class="card-body">
                             <span class="text-accent small fw-bold">// <?php echo $d['tipo']; ?></span>
                             <h5 class="card-title fw-bold mt-1 text-white"><?php echo $d['titulo']; ?></h5>
-                            <p class="small text-secondary"><?php echo $d['anio']; ?> • <?php echo $d['num_canciones']; ?> temas</p>
-                            <a href="<?php echo $d['spotify_link']; ?>" target="_blank" class="btn btn-sm btn-link text-white p-0 text-decoration-none small sp-border-bottom-animation">Escuchar en Spotify ↗</a>
+                            <p class="small text-secondary"><?php echo $d['anio']; ?> • <?php
+                                echo $d['cantidad_canciones'];
+                                if ($d['cantidad_canciones'] == 1) {
+                                    ?><span> canción</span><?php
+                                } else {
+                                    ?><span> canciones</span><?php
+                                }?>
+                            </p>
                         </div>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
     </main>
-
-    <div class="modal fade" id="playerModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-black border-neon rounded-0">
-                <div class="modal-body p-4 text-center">
-                    <h4 id="modalSongTitle" class="text-accent fw-bold mb-4"></h4>
-                    <div id="playlistContainer" class="text-start mb-4 custom-scrollbar" style="max-height: 250px; overflow-y: auto;">
-                    </div>
-                    <audio id="mainAudio" controls class="w-100 custom-audio mb-3">
-                        <source src="" type="audio/mpeg">
-                    </audio>
-                    <button type="button" class="btn btn-sm btn-outline-secondary rounded-0 w-100" data-bs-dismiss="modal">CERRAR</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+<?php include 'includes/templates/modals/_reproductor.php'; ?>
 <?php include 'includes/templates/footer.php'; ?>

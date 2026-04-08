@@ -153,3 +153,136 @@ tr:hover td {
     background: white;
     color: black;
 }
+/*********************************************************/
+/************** Reproductor de la discografía ************/
+/*********************************************************/
+
+#playerModal .modal-lg { max-width: 1000px; }
+
+#playerModal .modal-content {
+    background: #050505;
+    border: 1px solid rgba(0, 255, 106, 0.3);
+    box-shadow: 0 0 60px #000, 0 0 20px rgba(0, 255, 106, 0.1);
+    border-radius: 0;
+}
+
+.modal-header-custom {
+    border-bottom: 1px solid #222;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-header-custom h3 {
+    font-size: 2.2rem;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+/* Filas de la lista */
+.track-row {
+    display: grid;
+    grid-template-columns: 40px 1fr 60px;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 2px;
+    background: transparent;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    color: #ccc;
+}
+
+.track-row:hover { background: rgba(255, 255, 255, 0.05); color: #fff; }
+
+.track-row.active-track {
+    background: rgba(0, 255, 106, 0.1) !important;
+    border-left: 3px solid var(--accent-color);
+}
+
+.track-row.active-track .track-title { color: var(--accent-color); font-weight: bold; }
+
+/* REPRODUCTOR CUSTOM UI */
+.player-controls-container {
+    position: relative;
+}
+
+.player-controls {
+    background: #000 !important;
+    border-top: 1px solid #222;
+    padding: 25px !important;
+    margin-top: 15px;
+}
+
+.custom-player-ui { position: relative; padding: 10px 0; }
+
+.code-font { font-family: 'Courier New', monospace; font-size: 0.85rem; }
+
+/* Botones de transporte */
+.btn-transport {
+    width: 20px;
+    height: 10px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.btn-transport:hover { color: var(--accent-color); transform: scale(1.1); }
+
+.btn-play-xl {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    font-size: 1.8rem;
+}
+
+.btn-play-xl i {
+    font-size: 2.5rem;
+    margin-left: 0 !important;
+}
+
+.btn-play-xl i.bi-pause-fill {
+    margin-left: 0;
+}
+
+.btn-play-xl:hover {
+    background: var(--accent-color);
+    color: #000;
+    box-shadow: 0 0 40px rgba(0, 255, 106, 0.5);
+    transform: scale(1.05);
+}
+
+/* Barra de progreso */
+.progress-container {
+    height: 6px;
+    background: #1a1a1a;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    margin-top: 10px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: var(--accent-color);
+    width: 0%;
+    box-shadow: 0 0 10px var(--accent-color);
+    transition: width 0.1s linear;
+}
+
+/* Volumen */
+.volume-box {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100px;
+}
+
+.custom-range {
+    accent-color: var(--accent-color);
+    width: 80px;
+    cursor: pointer;
+}
