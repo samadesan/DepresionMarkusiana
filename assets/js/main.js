@@ -1,118 +1,85 @@
 $(document).ready(function() {
-    // --- Lógica de Intersection Observer ---
+
+    // --- 1. REVELACIÓN GLOBAL (Observer mejorado) ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                observer.unobserve(entry.target);
+            } else {
+                // Quitamos la clase al salir de la pantalla para que la animación
+                // se vuelva a aplicar cuando el usuario vuelva a hacer scroll.
+                entry.target.classList.remove('active');
             }
         });
     }, { threshold: 0.1 });
 
     $('.reveal').each(function() { observer.observe(this); });
 
-    // --- Lógica de Filtros ---
-    $("#discoSearch, #filterType, #filterYear").on("input change", function() {
+    // --- 2. FILTROS Y ORDENACIÓN (Con reactivación de animación) ---
+    function filtrarYOrdenar() {
         const texto = $("#discoSearch").val().toLowerCase().trim();
         const categoria = $("#filterType").val();
         const anio = $("#filterYear").val();
+        const orden = $("#orderUpDown").val();
 
-        $(".disco-item").each(function() {
-            const cardText = $(this).find('.card-body').text().toLowerCase();
+        let items = $(".disco-item").toArray();
+
+        // Ordenación
+        items.sort((a, b) => {
+            const valA = parseInt($(a).data('order'));
+            const valB = parseInt($(b).data('order'));
+            return (orden === 'asc') ? valA - valB : valB - valA;
+        });
+
+        $("#discoContainer").append(items);
+
+        // Filtro visual con reinicio de animación
+        $(".disco-item").each(function(index) {
+            const titulo = $(this).find('.card-title').text().toLowerCase();
             const tipo = $(this).data("type");
             const discoAnio = $(this).data("year")?.toString();
 
-            const coincide = cardText.includes(texto) &&
+            const coincide = titulo.includes(texto) &&
                 (categoria === "all" || tipo === categoria) &&
                 (anio === "all" || discoAnio === anio);
 
-            $(this).toggle(coincide);
-        });
-    });
+            if (coincide) {
+                $(this).show(); // Aseguramos que esté en el DOM
+                $(this).removeClass('active'); // Apagamos la animación
 
-    // --- LÓGICA DEL REPRODUCTOR ---
-    const audio = document.getElementById('mainAudio');
+                // Forzamos al navegador a recalcular el estilo (Reflow mágico)
+                void this.offsetWidth;
 
-    $(document).on("click", ".open-player", function() {
-        const discoId = $(this).data('id');
-        const discoTitle = $(this).data('title');
-        $("#modalSongTitle").text(discoTitle);
-        $("#playerModal").modal('show');
+                // Encendemos la animación de nuevo con un pequeño efecto en cascada (stagger)
+                setTimeout(() => {
+                    $(this).addClass('active');
+                }, index * 20); // 20ms de retraso por tarjeta para que entren escalonadas
 
-        const lista = $("#playlistContainer");
-        lista.html('<div class="text-center py-4"><div class="spinner-border text-success"></div></div>');
-
-        $.getJSON('includes/get_canciones.php', { disco_id: discoId }, function(data) {
-            lista.empty();
-            if(data.length > 0) {
-                data.forEach((track, i) => {
-                    lista.append(`
-                        <div class="track-row" data-src="assets/media/audio/${track.archivo_mp3}">
-                            <span class="track-number">${i + 1}</span>
-                            <span class="track-title text-truncate">${track.titulo}</span>
-                            <span class="track-duration text-end">${track.duracion_track}</span>
-                        </div>
-                    `);
-                });
+            } else {
+                $(this).removeClass('active');
+                $(this).hide();
             }
         });
-    });
+    }
 
-    // Reproducir al clicar fila
-    $(document).on("click", ".track-row", function() {
-        $(".track-row").removeClass("active-track");
-        $(this).addClass("active-track");
-        audio.src = $(this).data('src');
-        audio.play();
-        $("#playIcon").attr("class", "bi bi-pause-fill");
-    });
+    $("#discoSearch, #filterType, #filterYear, #orderUpDown").on("input change", filtrarYOrdenar);
 
-    // Botones de control
-    $(document).on("click", "#customPlayPause", function() {
-        if(!audio.src) return;
-        if(audio.paused) {
-            audio.play();
-            $("#playIcon").attr("class", "bi bi-pause-fill");
+    // --- Lógica para el Icono "Volver Arriba" (El Perro) ---
+    const $backToTop = $('#backToTop');
+
+    // Función para detectar el scroll
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 300) {
+            $backToTop.addClass('show');
         } else {
-            audio.pause();
-            $("#playIcon").attr("class", "bi bi-play-fill");
+            // Si estamos arriba, lo ocultamos
+            $backToTop.removeClass('show');
         }
     });
 
-    // Actualizar barra y tiempo
-    audio.addEventListener('timeupdate', () => {
-        const pct = (audio.currentTime / audio.duration) * 100;
-        $("#progressBar").css("width", pct + "%");
-        $("#currentTrackTime").text(formatTime(audio.currentTime));
-        $("#totalTrackTime").text(formatTime(audio.duration || 0));
+    // Función al hacer clic en el icono
+    $backToTop.on('click', function(e) {
+        e.preventDefault();
+        $('html, body').animate({scrollTop:0}, 'smooth');
     });
-
-    // Saltar pista (Next/Prev)
-    function shiftTrack(next = true) {
-        const current = $(".track-row.active-track");
-        let target = next ? current.next() : current.prev();
-        if(!target.length) target = next ? $(".track-row").first() : $(".track-row").last();
-        target.click();
-    }
-
-    $(document).on("click", "#nextTrack", () => shiftTrack(true));
-    $(document).on("click", "#prevTrack", () => shiftTrack(false));
-    audio.addEventListener('ended', () => shiftTrack(true));
-
-    // Barra de progreso clickeable
-    $("#progressWrapper").on("click", function(e) {
-        const x = e.pageX - $(this).offset().left;
-        audio.currentTime = (x / $(this).width()) * audio.duration;
-    });
-
-    // Volumen
-    $("#volumeSlider").on("input", function() { audio.volume = $(this).val(); });
-
-    function formatTime(sec) {
-        const m = Math.floor(sec / 60);
-        const s = Math.floor(sec % 60);
-        return `${m}:${s < 10 ? '0' : ''}${s}`;
-    }
-
-    $('#playerModal').on('hidden.bs.modal', () => { audio.pause(); });
 });
