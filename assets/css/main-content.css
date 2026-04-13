@@ -99,3 +99,12 @@ span.elementos-resaltados {
     transition: all 0.5s;
     cursor: pointer;
 }
+
+.sold-out-etiqueta {
+    color: #000;
+    font-weight: bold;
+    font-size: 0.7rem;
+    rotate: -10deg;
+    padding: 0.5rem 1rem;
+    background: gold !important;
+}

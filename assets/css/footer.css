@@ -16,29 +16,68 @@
     font-size: 0.9rem;
     border: 1px solid transparent;
     padding: 5px 10px;
-    transition: all 0.3s;
-}
-
-.social-links a:hover {
-    border: 1px solid var(--text-color);
+    transition: all 0.4s;
     border-radius: 5px;
-    color: var(--accent-color) !important;
 }
 
-/* Listas */
-footer ul li {
-    list-style-type: none;
-    padding: 10px 0;
-    width: fit-content;
+.social-links #ig:hover {
+    background: linear-gradient(45deg,
+            rgba(240, 148, 51, 0.3) 0%,
+            rgba(230, 104, 60, 0.3) 25%,
+            rgba(220, 39, 67, 0.3) 50%,
+            rgba(204, 35, 102, 0.3) 75%,
+            rgba(188, 24, 136, 0.3) 100%
+    );
+    color: #ff6ed3 !important;
 }
 
-/* Links */
+.social-links #x:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white !important;
+}
+
+.social-links #yt:hover {
+    background-color: rgba(255, 0, 0, 0.2);
+    color: #ff1414 !important;
+}
+
+.social-links #sp:hover {
+    background-color: rgba(0, 255, 106, 0.2) !important;
+    color: #0dff74 !important;
+}
+
+.social-links #ds:hover {
+    background-color: rgba(30, 144, 255, 0.2) !important;
+    color: dodgerblue !important;
+}
+
+/* --- Contenedor de Políticas --- */
+.footer-policy {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20rem;
+    width: 100%;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-policy p {
+    margin-bottom: 0;
+}
+
+/* --- Links del Footer --- */
 .footer-links {
     color: var(--text-color);
     text-decoration: none;
     font-size: 0.87rem;
-    padding: 0;
-    margin: 0 auto;
+    transition: color 0.3s ease;
+}
+
+.footer-links:hover {
+    color: var(--accent-color) !important;
 }
 
 .footer-links:hover {

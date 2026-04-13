@@ -32,6 +32,11 @@ body::before {
     z-index: -1;
     transform: scale(1.1);
 }
+/* Huella al pasar por elementos con :hover */
+a:hover, button:hover, .album-card:hover, #back-to-top:hover {
+    cursor: url('../media/img/cursor-huella-24x24-1.png'), pointer;
+}
+
 
 /* Ajuste para que la letra no sea oscura en la discografía */
 .card-title, .card-text {
@@ -49,35 +54,38 @@ body::before {
 /* --- Icono "Volver Arriba" --- */
 #backToTop {
     position: fixed;
-    bottom: 30px; /* Distancia desde abajo */
-    right: 30px;  /* Distancia desde la derecha */
-    width: 60px;  /* Tamaño del icono */
+    bottom: 30px;
+    right: 30px;
     height: auto;
     cursor: pointer;
-    z-index: 1000; /* Por encima de todo */
-    /* Oculto por defecto */
+    z-index: 1000;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.5s ease; /* Animación suave de aparición */
+    transition: all 0.5s ease;
 }
 
-/* Clase para mostrar el icono (se añade con JS) */
+#backToTop img {
+    width: 100px;
+}
+
+/* Clase para mostrar el icono */
 #backToTop.show {
-    opacity: 0.8; /* Un poco transparente por defecto */
+    opacity: 0.8;
     visibility: visible;
 }
 
 #backToTop:hover {
-    opacity: 1; /* Totalmente opaco al pasar el ratón */
-    transform: scale(1.1); /* Un pequeño pulso */
+    cursor: url("../media/img/cursor-huella-24x24-1.png"), pointer;
+    opacity: 1;
+    transform: scale(1.1);
 }
 
 /* Bocadillo de texto "Volver arriba" */
 #backToTop::after {
     content: "Volver arriba";
     position: absolute;
-    bottom: 100%; /* Encima del icono */
-    right: 50%;
+    bottom: 90%;
+    right: 60%;
     transform: translateX(50%);
     margin-bottom: 10px;
     padding: 5px 10px;
@@ -85,16 +93,14 @@ body::before {
     color: #000;
     font-family: var(--font-main), serif;
     font-size: 12px;
-    white-space: nowrap;
     border-radius: 4px;
-    opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
     pointer-events: none;
 }
 
 /* Mostrar bocadillo al hover */
 #backToTop:hover::after {
+    animation: fadeInSharp 0.6s forwards;
     opacity: 1;
     visibility: visible;
 }

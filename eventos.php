@@ -87,7 +87,7 @@ $eventos = $query->fetchAll(PDO::FETCH_ASSOC);
                                 <?php if($e['estado'] == 'disponible'): ?>
                                     <a href="<?php echo $e['link_entradas']; ?>" target="_blank" class="btn btn-outline-light rounded-0 px-4">ADQUIRIR ENTRADA</a>
                                 <?php elseif($e['estado'] == 'agotado'): ?>
-                                    <span class="badge border border-danger text-danger p-2 px-3">SOLD OUT</span>
+                                    <span class="sold-out-etiqueta">SOLD OUT</span>
                                 <?php else: ?>
                                     <span class="badge border border-secondary text-secondary p-2 px-3 text-uppercase"><?php echo $e['estado']; ?></span>
                                 <?php endif; ?>

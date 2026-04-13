@@ -7,7 +7,6 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto text-uppercase">
                 <li class="nav-item"><a class="nav-link" href="biografia.php">Biografía</a></li>
-                <li class="nav-item"><a class="nav-link" href="miembros.php">Miembros</a></li>
                 <li class="nav-item"><a class="nav-link" href="discografia.php">Discografía</a></li>
                 <li class="nav-item"><a class="nav-link" href="instrumentos.php">Instrumentos</a></li>
                 <li class="nav-item"><a class="nav-link" href="merch.php">Merch</a></li>
