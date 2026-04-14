@@ -8,8 +8,24 @@
 .footer h5 {
     letter-spacing: 2px;
 }
+/* Enlaces de Depresión Sonora */
+.ds-og-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
 
-/** ELEMENTOS FOOTER **/
+.ds-og-links img {
+    width: 300px;
+    filter: grayscale(70%);
+    transition: 600ms;
+}
+
+.ds-og-links img:hover {
+    width: 250px;
+    filter: grayscale(0%);
+}
 
 /* Enlaces de redes sociales */
 .social-links a {

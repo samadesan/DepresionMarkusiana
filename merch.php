@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/db.php';
+require_once 'database/db.php';
 $pageTitle = "Merchandising";
 include 'includes/templates/head.php';
 include 'includes/templates/navbar.php';

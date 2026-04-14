@@ -12,19 +12,6 @@ h2.titulo-centrado  {
     align-content: center
 }
 
-span.elementos-resaltados {
-    color: #00ff6a;
-    font-weight: 900;
-}
-
-/* Párrafos */
-.contenido-parrafos {
-    font-size: 14px; !important;
-    line-height: 1.9;
-    margin-bottom: 30px;
-    padding-bottom: 15px;
-}
-
 /* Botón Neón (Verde #00ff6a) */
 .btn-neon {
     background-color: var(--accent-color);
@@ -48,7 +35,7 @@ span.elementos-resaltados {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Oscurece para resaltar el botón */
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,43 +48,11 @@ span.elementos-resaltados {
     opacity: 1;
 }
 
-/* Modal y Reproductor */
-.border-neon {
-    border: 2px solid var(--accent-color) !important;
-}
-
-.audio-visualizer {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    height: 40px;
-}
-
 .bar {
     width: 6px;
     background: var(--accent-color);
     box-shadow: 0 0 10px var(--accent-color);
     animation: pulse 0.5s infinite alternate;
-}
-
-/* Estilo para el reproductor de audio nativo */
-.custom-audio::-webkit-media-controls-panel {
-    background-color: #111;
-}
-
-/* Links */
-.ds-links {
-    color: #fff;
-    font-size: 14px;
-    padding: 0;
-    margin: 0 auto;
-}
-
-.ds-links:hover {
-    color: var(--accent-color) !important;
-    text-decoration: initial;
-    transition: all 0.5s;
-    cursor: pointer;
 }
 
 .sold-out-etiqueta {

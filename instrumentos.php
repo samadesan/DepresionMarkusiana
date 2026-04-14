@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/db.php';
+require_once 'database/db.php';
 $pageTitle = "Instrumentos";
 include 'includes/templates/head.php';
 include 'includes/templates/navbar.php';
@@ -13,8 +13,20 @@ $instrumentos = $query->fetchAll(PDO::FETCH_ASSOC);
     <main class="container py-5" id="main-wrapper">
         <div class="row mb-5 reveal">
             <div class="col-12 text-start">
-                <h2 class="display-4 fw-bold text-white">EQUIPAMIENTO</h2>
-                <p class="text-accent">// LAS ARMAS DE MARCOS CRESPO</p>
+                <h2 class="display-4 fw-bold titulo-centrado mb-5">INSTRUMENTOS&nbsp;-&nbsp;<span class="elementos-resaltados">¿CÓMO SE HIZO?</span></h2>
+                <p class="contenido-parrafos">Esta es una lista del hardware utilizado para grabar este álbum. Seguramente se me olvide algún
+                    sinte o cacharro que suena en medio de alguna de las canciones.
+                </p>
+                <hr>
+                <p class="contenido-parrafos">
+                    Es importante señalar que aquí solo se muestra el hardware, ya que también se han utilizado
+                    sintetizadores virtuales, samples y plugins de efectos. Durante la composición y producción de
+                    las demos, se emplearon otros instrumentos que contribuyeron al resultado final.
+                </p>
+                <hr>
+                <p class="contenido-parrafos">
+                    Solo pretendo arrojar algo de luz a quien quiera investigar y profundizar en el sonido de Depresión Sonora.
+                </p>
             </div>
         </div>
 

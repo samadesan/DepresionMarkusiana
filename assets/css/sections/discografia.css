@@ -1,0 +1,50 @@
+/* Fondo */
+#discoContainer {
+    background: rgba(0, 0, 0, 0.38);
+    padding: 5px 130px 40px 130px;
+    border-top: var(--accent-color) solid 1px;
+    gap: 0;
+}
+
+/* Tarjetas de Álbum */
+.album-card {
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.album-card:hover {
+    transform: scale(1.02);
+    border-color: var(--accent-color) !important;
+}
+
+/* Filtro al pasar encima de la tarjeta de la discografía */
+.grayscale {
+    filter: grayscale(0%) contrast(100%);
+    transition: filter 0.4s ease;
+}
+
+.album-card:hover .grayscale {
+    filter: grayscale(100%) contrast(120%);
+}
+
+/* Resaltado cuando se llega vía enlace #anchor */
+.disco-item:target .album-card {
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 30px rgba(0, 255, 106, 0.2);
+    transform: scale(1.03);
+}
+
+/* Espacio superior para que el Navbar no tape el disco al saltar */
+.disco-item {
+    scroll-margin-top: 120px;
+}
+
+/* Scrollbar personalizada para el playlist del modal */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #000;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+}

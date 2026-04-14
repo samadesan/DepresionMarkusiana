@@ -1,0 +1,30 @@
+/* --- ESTILOS INSTRUMENTOS --- */
+.instrument-card {
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(5px);
+}
+
+.instrument-card:hover {
+    border-color: var(--accent-color) !important;
+    transform: translateY(-5px);
+}
+
+.img-container {
+    cursor: zoom-in;
+}
+
+.instrument-img {
+    transition: all 0.5s ease;
+    filter: grayscale(1) brightness(0.8);
+}
+
+.instrument-card:hover .instrument-img {
+    filter: grayscale(0) brightness(1.1);
+    transform: scale(1.05);
+}
+
+.small-title {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
