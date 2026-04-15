@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-04-2026 a las 16:05:45
+-- Tiempo de generación: 15-04-2026 a las 16:09:09
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -286,23 +286,32 @@ INSERT INTO `instrumentos` (`id`, `nombre`, `imagen_url`, `descripcion`) VALUES
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
-  `descripcion` text DEFAULT NULL,
   `precio` decimal(10,2) NOT NULL,
   `imagen_url` varchar(255) NOT NULL,
-  `categoria` enum('Ropa','Accesorios','Vinilos','Otros') DEFAULT 'Ropa',
-  `stock` int(11) DEFAULT 10,
-  `link_compra` varchar(255) DEFAULT NULL,
-  `estado` varchar(50) DEFAULT NULL,
-  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp()
+  `enlace_compra` varchar(255) NOT NULL,
+  `estado` enum('disponible','agotado') NOT NULL DEFAULT 'disponible'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `imagen_url`, `categoria`, `stock`, `link_compra`, `estado`, `fecha_creacion`) VALUES
-(1, 'Camiseta Antianémico', 'Algodón 100% orgánico. Serigrafía delantera.', 25.00, 'merch_camiseta_1.jpg', 'Ropa', 15, 'https://sonidomuchacho.com/tienda/', 'NUEVO', '2026-04-02 14:40:21'),
-(2, 'Vinilo El Arte de Morir...', 'Edición limitada en color negro.', 22.00, 'merch_vinilo_1.jpg', 'Vinilos', 0, 'https://sonidomuchacho.com/tienda/', 'SOLD OUT', '2026-04-02 14:40:21');
+INSERT INTO `productos` (`id`, `nombre`, `precio`, `imagen_url`, `enlace_compra`, `estado`) VALUES
+(1, 'Vinilo Estándar | Los Perros No Entienden Internet (...Y Yo No Entiendo De Sentimientos)', 25.00, 'DS_LPNEI_ESTANDAR.png', 'https://sonidomuchacho.com/producto/depresion-sonora-los-perros-no-entienden-internet/', 'agotado'),
+(2, 'Vinilo Deluxe | Los Perros No Entienden Internet (...Y Yo No Entiendo De Sentimientos)', 35.00, 'DS_LPNEI_DELUXE.png', 'https://sonidomuchacho.com/producto/depresion-sonora-los-perros-no-entienden-internet/', 'agotado'),
+(3, 'CD | Los Perros No Entienden Internet (...Y Yo No Entiendo De Sentimientos)', 15.00, 'CD_DepresionSonora_LPNEI_01.jpg', 'https://sonidomuchacho.com/producto/depresion-sonora-los-perros-no-entienden-internet/', 'agotado'),
+(4, 'Cassete | Los Perros No Entienden Internet (...Y Yo No Entiendo De Sentimientos)', 12.00, 'Cassette_DepresionSonora_LPNEI_03.jpg', 'https://sonidomuchacho.com/producto/depresion-sonora-los-perros-no-entienden-internet/', 'agotado'),
+(5, 'Vinilo DELUXE + Camiseta | Los Perros No Entienden Internet (...Y Yo No Entiendo De Sentimientos) | Pack', 50.00, 'Depresion-Sonora-LPNEI-pack-DELUXE-camiseta.png', 'https://sonidomuchacho.com/producto/pack-vinilo-deluxelos-perros-no-entienden-internet-camiseta-negra-depresion-sonora-lpnei/', 'agotado'),
+(6, 'Vinilo Estándar + Camiseta | Los Perros No Entienden Internet (...Y Yo No Entiendo De Sentimientos) | Pack', 45.00, 'Depresion-Sonora-LPNEI-pack-VINILO-camiseta.png', 'https://sonidomuchacho.com/producto/pack-vinilo-los-perros-no-entienden-internet-camiseta-negra-depresion-sonora-lpnei/', 'agotado'),
+(7, 'CD + Camiseta | Los Perros No Entienden Internet (...Y Yo No Entiendo De Sentimientos) | Pack', 35.00, 'Depresion-Sonora-LPNEI-pack-cd-camiseta.png', 'https://sonidomuchacho.com/producto/pack-cd-los-perros-no-entienden-internet-camiseta-negra-depresion-sonora-lpnei/', 'agotado'),
+(8, 'Sudadera Negra Depresión Sonora | Los Perros No Entienden Internet (...Y Yo No Entiendo De Sentimientos)', 35.00, 'Depresion-Sonora-LPNEI-sudadera.png', 'https://sonidomuchacho.com/producto/sudadera-negra-depresion-sonora-lpnei/', 'disponible'),
+(9, 'Camiseta Negra Depresión Sonora | Los Perros No Entienden Internet (...Y Yo No Entiendo De Sentimientos)', 25.00, 'Depresion-Sonora-LPNEI-camiseta_LPNEI.png', 'https://sonidomuchacho.com/producto/camiseta-negra-depresion-sonora-lpnei/', 'agotado'),
+(10, 'Camiseta Negra Depresión Sonora | Vacaciones para Siempre', 25.00, 'Depresion-Sonora-LPNEI-camiseta_vacaciones_para-siempre.png', 'https://sonidomuchacho.com/producto/camiseta-negra-depresion-sonora-vacaciones-para-siempre/', 'disponible'),
+(11, 'Camiseta Azul Oscuro Depresión Sonora | La Ley del Pobre', 25.00, 'Depresion-Sonora-LPNEI-Camiseta_Ley-del-pobre.png', 'https://sonidomuchacho.com/producto/camiseta-azul-oscuro-depresion-sonora-la-ley-del-pobre/', 'disponible'),
+(12, 'Camiseta Blanca Depresión Sonora | Domingo Químico.', 25.00, 'Depresion-Sonora-LPNEI-camiseta-domingo-quimico.png', 'https://sonidomuchacho.com/producto/camiseta-blanca-depresion-sonora-domingo-quimico/', 'disponible'),
+(13, 'Bandana Depresión Sonora “La Balada de los Perros”', 6.00, 'Depresion-Sonora-la-balada-de-los-perros-bandana--768x768.jpg', 'https://sonidomuchacho.com/producto/bandana-depresion-sonora-la-balada-de-los-perros/', 'disponible'),
+(14, 'Gorra bordada Depresión Sonora | <span class=\"text-danger\">EDICIÓN LIMITADA</span>', 18.00, 'depresion-sonora-merch-usa-tour-gorra-1024x1021.jpg', 'https://sonidomuchacho.com/producto/gorra-bordada-depresion-sonora/', 'disponible'),
+(15, 'Depresión Sonora – El Arte de Morir Muy Despacio - Vinilo Negro', 18.00, 'Depresion-Sonora-EADMMD-Vinilo-Front00005-1024x1024.jpg', 'https://sonidomuchacho.com/producto/depresion-sonora-el-arte-de-morir-muy-despacio/', 'disponible');
 
 --
 -- Índices para tablas volcadas
@@ -371,7 +380,7 @@ ALTER TABLE `instrumentos`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas
