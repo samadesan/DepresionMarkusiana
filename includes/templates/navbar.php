@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-        <a href="index.php" id="slogan-navbar"><img src="assets/media/img/DEPRESION-SONORA-slogan-2.png" alt="Slogan-DS" style="width: 440px;"></a>
+        <a href="index.php" id="slogan-navbar"><img src="assets/media/img/DEPRESION-SONORA-slogan-2.png" class="slogan-2" alt="Slogan-DS" style="width: 440px;"></a>
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>

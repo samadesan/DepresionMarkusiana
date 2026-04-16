@@ -20,7 +20,7 @@
                             <img src="assets/media/img/DEPRESION-SONORA-slogan-1.png" alt="Slogan-DS" id="slogan-footer" style="max-width: 250px;">
                         </a>
                         <p class="small text-secondary mt-3">
-                            Proyecto y diseño realizado por <a href="samuel-aded.php" class="footer-links">Samuel Aded Santafé</a>. <br>
+                            Proyecto y diseño realizado por <a href="https://samadesan.github.io" class="footer-links">Samuel Aded Santafé</a>. <br>
                             © <?php echo date("Y"); ?> — El fin del mundo comenzó ayer.
                         </p>
                     </div>

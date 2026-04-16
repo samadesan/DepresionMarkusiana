@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="assets/css/main-content.css">
 
     <link rel="stylesheet" href="assets/css/sections.css">
+    <link rel="stylesheet" href="assets/css/sections/index.css  ">
     <link rel="stylesheet" href="assets/css/sections/bio.css">
     <link rel="stylesheet" href="assets/css/sections/discografia.css">
     <link rel="stylesheet" href="assets/css/sections/instrumentos.css">
