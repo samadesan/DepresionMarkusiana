@@ -94,3 +94,22 @@ try {
     </main>
 
 <?php include 'includes/templates/footer.php'; ?>
+<?php include 'includes/templates/modals/_aviso-index.php' ?>
+<script src="api/bootstrap-5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        const avisoAceptado = localStorage.getItem('avisoLegalAceptado');
+
+        if (!avisoAceptado) {
+            const modalElement = document.getElementById('modalAvisoLegal');
+            const myModal = new bootstrap.Modal(modalElement);
+            myModal.show();
+
+            const btnAceptar = modalElement.querySelector('.btn-outline-accent');
+            btnAceptar.addEventListener('click', function() {
+                localStorage.setItem('avisoLegalAceptado', 'true');
+            });
+        }
+    });
+</script>
